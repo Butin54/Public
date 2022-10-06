@@ -29,8 +29,7 @@ def binary_search(array, element, left, right):
 array_number = []
 while not array_number:
     try:
-        array_number = list(map(int,
-                        		input("Введите последовательность целых чисел через пробел").split()))
+        array_number = list(map(int, input("Введите последовательность целых чисел через пробел").split()))
     except ValueError as e:
         print("Вы ввели последовательность чисел не корректно")
 array_number = quicksort_random(array_number, 0, len(array_number)-1)
