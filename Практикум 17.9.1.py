@@ -17,8 +17,6 @@ def quicksort_random(array, left, right):
         quicksort_random(array, i, right)
     return array
 def binary_search(array, element, left, right): 
-    if left > right:
-        return "В введенной последовательности нет элементов меньше заданного числа"
     middle = (right+left) // 2
     if array[middle] >= element and array[middle-1] < element:
         return middle-1
@@ -29,7 +27,8 @@ def binary_search(array, element, left, right):
 array_number = []
 while not array_number:
     try:
-        array_number = list(map(int, input("Введите последовательность целых чисел через пробел").split()))
+        array_number = list(map(int, input("Введите последовательность "\
+                       "целых чисел через пробел").split()))
     except ValueError as e:
         print("Вы ввели последовательность чисел не корректно")
 array_number = quicksort_random(array_number, 0, len(array_number)-1)
@@ -39,6 +38,11 @@ while not isinstance(x, int):
         x = int(input("Задайте целое число"))
     except ValueError as e:
         print("Ввод некорректен")
-print(array_number)
-print(x)
-print(binary_search(array_number, x, 0, len(array_number)-1))
+if x > array_number[-1]:
+    print("В последовательности нет чисел, которые удовлетворяли бы условию отбора")
+elif x <= array_number[0]:
+    print("В последовательности нет чисел, которые удовлетворяли бы условию отбора")
+else:
+    print(array_number)
+    print(x)
+    print(binary_search(array_number, x, 0, len(array_number)-1))
